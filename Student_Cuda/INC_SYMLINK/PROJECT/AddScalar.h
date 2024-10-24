@@ -1,0 +1,1 @@
+/home/mse22/CUDA/toStudent/code/WCudaStudent/Student_Cuda/src/cpp/core/01_addScalar_objet/host/AddScalar.h

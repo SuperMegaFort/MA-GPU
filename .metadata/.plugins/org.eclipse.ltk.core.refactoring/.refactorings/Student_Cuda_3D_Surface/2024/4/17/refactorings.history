@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Student_Cuda_3D_Surface/src/core/a_heightmap&apos; to &apos;a_highmap&apos;" description="Rename resource &apos;a_heightmap&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/core/a_heightmap" name="a_highmap" stamp="1713703388702" updateReferences="false"/>
+</session>

@@ -1,0 +1,1 @@
+/home/bilat/CBI/Dropbox/02_CBI_LINUX/CoursCuda/toStudent/code/WCudaStudent/Student_Cuda_Image/src/cpp/core/01_Rippling/b_provider/RipplingProvider.h
