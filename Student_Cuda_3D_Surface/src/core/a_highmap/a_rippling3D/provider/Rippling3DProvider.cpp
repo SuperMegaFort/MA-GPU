@@ -46,7 +46,6 @@ SurfaceStrip_I* Rippling3DProvider::createSurfaceStrip()
     dim3 dg(mp, 4, 1);  	// disons, a optimiser selon le gpu, peut drastiqument ameliorer ou baisser les performances
     dim3 db(coreMP, 4, 1);   	// disons, a optimiser selon le gpu, peut drastiqument ameliorer ou baisser les performances
     Grid grid(dg, db);
-
     return new Rippling3D_RGBA(grid, w, h, domaineMath, dt); // Model
     }
 

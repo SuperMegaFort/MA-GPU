@@ -54,10 +54,15 @@ void SceneCubeCreator::createImages()
     ptrImage1 = RipplingProvider().createImageGL();
     ptrImage2 = MandelbrotProvider().createImageGL();
 
-    ptrImage3 = RaytracingProviderGM().createImageGL();
-    ptrImage4 = RaytracingProviderSM().createImageGL();
-    ptrImage5 = RaytracingProviderCM().createImageGL();
-    ptrImage6 = RaytracingProviderCM2SM().createImageGL();
+    ptrImage3 = RipplingProvider().createImageGL();
+    ptrImage4 = MandelbrotProvider().createImageGL();
+    ptrImage5 = RipplingProvider().createImageGL();
+    ptrImage6 = MandelbrotProvider().createImageGL();
+
+//    ptrImage3 = RaytracingProviderGM().createImageGL();
+//    ptrImage4 = RaytracingProviderSM().createImageGL();
+//    ptrImage5 = RaytracingProviderCM().createImageGL();
+//    ptrImage6 = RaytracingProviderCM2SM().createImageGL();
     }
 
 void SceneCubeCreator::createScene()

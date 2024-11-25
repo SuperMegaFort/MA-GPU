@@ -29,6 +29,10 @@ __global__ void KAddIntProtocoleI(int* ptrSumGM)
     // ReductionAdd
 
     // __syncthreads(); // des threads de meme block!// Question : utile? ou?
+    extern __shared__ int tabSM[];
+    reductionIntraThread(tabSM);
+    __syncthreads();
+    ReductionAdd::reduce(tabSM, ptrSumGM);
     }
 
 /*--------------------------------------*\
@@ -41,6 +45,8 @@ __global__ void KAddIntProtocoleI(int* ptrSumGM)
 __device__ void reductionIntraThread(int* tabSM)
     {
     // TODO ReductionAddIntI
+    const int TID_loc = Thread2D::tidLocal();
+    tabSM[TID_loc] = 1;
 
     }
 

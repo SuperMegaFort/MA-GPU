@@ -33,12 +33,14 @@ ReductionLongII::ReductionLongII(const Grid& grid , long* ptrSum,bool isVerbose)
 	ptrSum(ptrSum)
     {
     // TODO ReductionLongII
-    this->sizeSM = -1;
+    this->sizeSM = sizeof(long)*grid.threadByBlock();
+    GM::mallocLong0(&ptrSumGM);
     }
 
 ReductionLongII::~ReductionLongII()
     {
     // TODO ReductionLongII
+    GM::free(ptrSumGM);
     }
 
 /*--------------------------------------*\
@@ -48,6 +50,8 @@ ReductionLongII::~ReductionLongII()
 void ReductionLongII::run()
     {
     // TODO ReductionLongII
+    KLongProtocoleII<<<grid.dg,grid.db, sizeSM >>>(ptrSumGM);
+    GM::memcpyDToH_long(ptrSum, ptrSumGM);
     }
 
 /*----------------------------------------------------------------------*\

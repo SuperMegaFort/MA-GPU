@@ -62,7 +62,8 @@ void Rippling::process(uchar4* tabPixelsGM, uint w, uint h, const DomaineMath& d
     // lancer le kernel avec <<<dg,db>>>
     // le kernel est importer ci-dessus (ligne 19)
 
-    assert(false);// to delete once implement
+    rippling<<<dg,db>>>(tabPixelsGM,w,h,t);
+
     }
 
 /**

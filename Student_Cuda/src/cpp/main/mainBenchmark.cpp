@@ -58,8 +58,8 @@ int mainBenchmark()
 
     // Slice
 	{
-	sliceGMHOST();
-	//sliceGM();
+	//sliceGMHOST();
+	sliceGM();
 	//sliceSM();
 	}
 

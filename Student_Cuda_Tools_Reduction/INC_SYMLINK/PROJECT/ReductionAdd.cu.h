@@ -1,1 +1,1 @@
-/home/bilat/CBI/Dropbox/02_CBI_LINUX/CoursCuda/toStudent/code/WCudaStudent/Student_Cuda_Tools_Reduction/src/01_cudatools/add/ReductionAdd.cu.h
+/home/mse22/CUDA/toStudent/code/WCudaStudent/Student_Cuda_Tools_Reduction/src/01_cudatools/add/ReductionAdd.cu.h

@@ -129,8 +129,9 @@ Grid SliceSmUse::createGrid()
     //	(C1) max(db.x*db.y*db.z)<=1024
     //	(C2) db power 2 (reduction)
 
-    Grid grid; // TODO SliceSM
-    assert(false); // to remove once coded
+    dim3 dg(MP, 4, 1);
+    dim3 db(64, 4, 1);
+    Grid grid(dg,db);
 
     return grid;
     }

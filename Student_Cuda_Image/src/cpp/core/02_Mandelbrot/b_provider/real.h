@@ -12,8 +12,8 @@
 
 // Choose one of the two (either/either):
 //#define MANDELBROT_DOUBLE
-#define MANDELBROT_FLOAT
-//#define MANDELBROT_HALF
+//#define MANDELBROT_FLOAT
+#define MANDELBROT_HALF
 
 /*----------------------*\
  |*	private 	*|

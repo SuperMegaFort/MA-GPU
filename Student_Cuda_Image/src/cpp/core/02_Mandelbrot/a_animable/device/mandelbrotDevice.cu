@@ -28,9 +28,14 @@ __global__ void mandelbrot(uchar4* tabPixelsGM , uint w , uint h , DomaineMath d
     // entrelacement
     // s -> (i,j) -> (x,y)
     // appeler colorXY
+    const int TID = Thread2D::tid();
+    const int NB_THREAD = Thread2D::nbThread();
+    const int WH = w * h;
 
-    double x;
-    double y;
+    double  x;
+    double  y;
+
+    int i, j;
     //domaineMath.toXY(i, j, &x, &y); // x et y doivent etre en double! Caster ensuite en real lors du passage à colorXY
 
     // Probleme : Choix a faire pour le type de (x,y) :
@@ -44,6 +49,19 @@ __global__ void mandelbrot(uchar4* tabPixelsGM , uint w , uint h , DomaineMath d
     //
     // Note : domaineMath.toXY travaille lui toujours en double pour vous permettre les deux possibilites ci-dessus
     //
+
+    int s = TID;
+    while (s < WH)
+	{
+	// (i,j) domaine ecran
+	// (x,y) domaine math
+	Indices::toIJ(s, w, &i, &j); // update (i, j)
+	domaineMath.toXY(i, j, &x, &y); //  (i,j) -> (x,y)
+
+	mandelbrotMath.colorXY(&tabPixelsGM[s], x, y); // update ptrDevPixels[s] Pas de conversion nécessaire si real.h #define MANDELBROT_DOUBLE
+
+	s += NB_THREAD;
+	}
     }
 
 /*----------------------------------------------------------------------*\

@@ -1,4 +1,4 @@
-13:24:22 **** Incremental Build of configuration CudaGCC_parallel for project Student_Cuda ****
+11:50:18 **** Build of configuration CudaGCC_parallel for project Student_Cuda_Tools_Reduction ****
 cbicc cuda jall 
 
 --------------------------------------------------------
@@ -92,9 +92,9 @@ Build cuda_11.8.r11.8/compiler.31833905_0
 
 
 ==================================================================================
-[CBI] -> Target Name  : Student_Cuda_mse22_cuda_118_x86_64
+[CBI] -> Target Name  : Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64
 [CBI] ->
-[CBI] -> Build        : /tmp/ramdrive/mse22/Targets/Student_Cuda_mse22/bin/Student_Cuda_mse22_cuda_118_x86_64.run
+[CBI] -> Build        : /tmp/ramdrive/mse22/Targets/Student_Cuda_Tools_Recution_mse22/bin/Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64.run
 [CBI] -> Deploy       : ../RELEASE/bin
 [CBI] ->
 [CBI] -> Type	      : EXE
@@ -107,7 +107,6 @@ Build cuda_11.8.r11.8/compiler.31833905_0
 
 [CBI] -> SRC AUX (Recursif) :
 [CBI] ->
-[CBI] ->              : ../Student_Cuda_Tools_Reduction/src/01_cudatools
 [CBI] ->              : /opt/api/ext/cpptest/200/LIB_STATIC/gcc
 
 [CBI] -> CXXFLAGS (Partial) :
@@ -134,49 +133,29 @@ Build cuda_11.8.r11.8/compiler.31833905_0
 [CBI] ->              : -arch=sm_75
 
 [CBI] -> INC_PATH (auto detect):
-[CBI] ->              : ../Student_Cuda_Tools_Reduction/src/01_cudatools/add/
-[CBI] ->              : ../Student_Cuda_Tools_Reduction/src/01_cudatools/generic/
-[CBI] ->              : src/cpp/core/01_addScalar_objet/host/
-[CBI] ->              : src/cpp/core/02_addArray/00_tools/
-[CBI] ->              : src/cpp/core/02_addArray/01_entrelacement/host/
-[CBI] ->              : src/cpp/core/02_addArray/01_entrelacement/use/
-[CBI] ->              : src/cpp/core/02_addArray/02_un_un/host/
-[CBI] ->              : src/cpp/core/02_addArray/02_un_un/use/
-[CBI] ->              : src/cpp/core/03_Slice/
-[CBI] ->              : src/cpp/core/03_Slice/01_Slice_GM_Host/host/
-[CBI] ->              : src/cpp/core/03_Slice/01_Slice_GM_Host/use/
-[CBI] ->              : src/cpp/core/03_Slice/02_Slice_GM/host/
-[CBI] ->              : src/cpp/core/03_Slice/02_Slice_GM/use/
-[CBI] ->              : src/cpp/core/03_Slice/03_Slice_SM/host/
-[CBI] ->              : src/cpp/core/03_Slice/03_Slice_SM/use/
-[CBI] ->              : src/cpp/core/04_Montecarlo/
-[CBI] ->              : src/cpp/core/04_Montecarlo/01_Montecarlo_mono/host/
-[CBI] ->              : src/cpp/core/04_Montecarlo/01_Montecarlo_mono/use/
-[CBI] ->              : src/cpp/core/04_Montecarlo/02_Montecarlo_multi/host/01_thread_version/
-[CBI] ->              : src/cpp/core/04_Montecarlo/02_Montecarlo_multi/host/02_stream_version/
-[CBI] ->              : src/cpp/core/04_Montecarlo/02_Montecarlo_multi/use/01_thread_version/
-[CBI] ->              : src/cpp/core/04_Montecarlo/02_Montecarlo_multi/use/02_stream_version/
-[CBI] ->              : src/cpp/core/05_addvector_stream/00_tools/
-[CBI] ->              : src/cpp/core/05_addvector_stream/01_device/
-[CBI] ->              : src/cpp/core/05_addvector_stream/02_baseline/host/
-[CBI] ->              : src/cpp/core/05_addvector_stream/02_baseline/use/
-[CBI] ->              : src/cpp/core/05_addvector_stream/03_bistream/host/
-[CBI] ->              : src/cpp/core/05_addvector_stream/03_bistream/use/
-[CBI] ->              : src/cpp/core/05_addvector_stream/03_tristream/host/
-[CBI] ->              : src/cpp/core/05_addvector_stream/03_tristream/host/helper/
-[CBI] ->              : src/cpp/core/05_addvector_stream/03_tristream/host/helper/warmup/
-[CBI] ->              : src/cpp/core/05_addvector_stream/03_tristream/use/
-[CBI] ->              : src/cpp/test/unit/03_Test_Slice/gm/
-[CBI] ->              : src/cpp/test/unit/03_Test_Slice/gmhost/
-[CBI] ->              : src/cpp/test/unit/03_Test_Slice/sm/
-[CBI] ->              : src/cpp/test/unit/04_Test_Montecarlo/
-[CBI] ->              : src/cpp/test/unit/04_Test_Montecarlo/mono/
-[CBI] ->              : src/cpp/test/unit/04_Test_Montecarlo/multi/01_thread/
-[CBI] ->              : src/cpp/test/unit/04_Test_Montecarlo/multi/02_stream/
-[CBI] ->              : src/cpp/test/unit/05_Test_Vector_Stream/base/
-[CBI] ->              : src/cpp/test/unit/05_Test_Vector_Stream/bistream/
-[CBI] ->              : src/cpp/test/unit/05_Test_Vector_Stream/tristream/justesse/
-[CBI] ->              : src/cpp/test/unit/05_Test_Vector_Stream/tristream/performance/
+[CBI] ->              : src/01_cudatools/add/
+[CBI] ->              : src/01_cudatools/generic/
+[CBI] ->              : src/02_use_cuda/add/int/PI/host/
+[CBI] ->              : src/02_use_cuda/add/int/PII/host/
+[CBI] ->              : src/02_use_cuda/generic/int/PI/host/
+[CBI] ->              : src/02_use_cuda/generic/int/PII/host/
+[CBI] ->              : src/02_use_cuda/generic/long/PII/host/
+[CBI] ->              : src/03_private/a_use_wrapper/add/int/PI/use/
+[CBI] ->              : src/03_private/a_use_wrapper/add/int/PII/use/
+[CBI] ->              : src/03_private/a_use_wrapper/generic/int/PI/use/
+[CBI] ->              : src/03_private/a_use_wrapper/generic/int/PII/use/
+[CBI] ->              : src/03_private/a_use_wrapper/generic/long/PII/use/
+[CBI] ->              : src/03_private/a_use_wrapper/tools/protocole/int/
+[CBI] ->              : src/03_private/a_use_wrapper/tools/protocole/int/I/
+[CBI] ->              : src/03_private/a_use_wrapper/tools/protocole/int/II/
+[CBI] ->              : src/03_private/a_use_wrapper/tools/protocole/long/
+[CBI] ->              : src/03_private/a_use_wrapper/tools/protocole/long/II/
+[CBI] ->              : src/03_private/a_use_wrapper/tools/use/
+[CBI] ->              : src/03_private/b_test/add/int/PI/
+[CBI] ->              : src/03_private/b_test/add/int/PII/
+[CBI] ->              : src/03_private/b_test/generic/int/PI/
+[CBI] ->              : src/03_private/b_test/generic/int/PII/
+[CBI] ->              : src/03_private/b_test/generic/long/PII/
 
 
 [CBI] -> LIB_PATH (auto detect):
@@ -336,12 +315,62 @@ Build cuda_11.8.r11.8/compiler.31833905_0
 [CBI] ->              : nvrtc
 [CBI] ->              : nvrtc-builtins
 
+[CBI] -> Create folder : /tmp/ramdrive/mse22/Targets/Student_Cuda_Tools_Recution_mse22/bin
+[CBI] -> Create folder : /tmp/ramdrive/mse22/Targets/Student_Cuda_Tools_Recution_mse22/obj
+[CBI] -> Create folder : /tmp/ramdrive/mse22/Targets/Student_Cuda_Tools_Recution_mse22/cubin
 
 [CBI] -> Compilation parallel (36 threads)
 
-[Student_Cuda_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/02_addArray/01_entrelacement/host/AddArray.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/main.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/mainTest.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/mainUse.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/b_test/add/int/PI/TestReductionAddI.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/b_test/add/int/PII/TestReductionAddII.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/b_test/generic/int/PI/TestReductionGenericI.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/b_test/generic/int/PII/TestReductionGenericII.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/b_test/generic/long/PII/TestReductionGenericLongII.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/add/int/PI/use/ReductionAddIntIProvider.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/add/int/PI/use/UseReductionAddIntI.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/add/int/PII/use/ReductionAddIntIIProvider.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/add/int/PII/use/UseReductionAddIntII.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/tools/use/UseReductionInt.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/tools/use/UseReductionLong.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/tools/protocole/int/I/PIntI.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/tools/protocole/int/II/PIntII.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/tools/protocole/long/II/PLongII.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/generic/int/PI/use/ReductionIntIProvider.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/generic/int/PI/use/UseReductionIntI.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/generic/int/PII/use/ReductionIntIIProvider.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/generic/int/PII/use/UseReductionIntII.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/generic/long/PII/use/ReductionLongIIProvider.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/03_private/a_use_wrapper/generic/long/PII/use/UseReductionLongII.cpp
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/add/int/PI/device/reductionAddIntI_device.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/add/int/PI/host/ReductionAddIntI.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/add/int/PII/device/reductionAddIntII_device.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/add/int/PII/host/ReductionAddIntII.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/generic/int/PI/device/reductionIntI_device.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/generic/int/PI/host/ReductionIntI.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/generic/int/PII/device/reductionIntII_device.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/generic/int/PII/host/ReductionIntII.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/generic/long/PII/device/reductionLongII_device.cu
+[Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/02_use_cuda/generic/long/PII/host/ReductionLongII.cu
+src/02_use_cuda/generic/int/PI/device/reductionIntI_device.cu(81): warning #177-D: function "addAtomicV2" was declared but never referenced
 
-[CBI] -> Linking to   : /tmp/ramdrive/mse22/Targets/Student_Cuda_mse22/bin/Student_Cuda_mse22_cuda_118_x86_64.run
+src/02_use_cuda/generic/int/PII/device/reductionIntII_device.cu(79): warning #177-D: function "addAtomicV2" was declared but never referenced
+
+src/mainTest.cpp: In function ‘int mainTest()’:
+src/mainTest.cpp:42:28: warning: ‘template<class> class std::auto_ptr’ is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]
+   42 |         testSuite.add(std::auto_ptr < Suite > (new TestReductionAddI()));
+      |                            ^~~~~~~~
+In file included from /usr/include/c++/11/bits/locale_conv.h:41,
+                 from /usr/include/c++/11/locale:43,
+                 from /usr/include/c++/11/iomanip:43,
+                 from src/mainTest.cpp:4:
+/usr/include/c++/11/bits/unique_ptr.h:57:28: note: declared here
+   57 |   template<typename> class auto_ptr;
+      |                            ^~~~~~~~
+
+[CBI] -> Linking to   : /tmp/ramdrive/mse22/Targets/Student_Cuda_Tools_Recution_mse22/bin/Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64.run
 
 [CBI] -> Library Link :
 [CBI] ->
@@ -425,8 +454,8 @@ Build cuda_11.8.r11.8/compiler.31833905_0
 
 
 ==================================================================================
-[CBI] -> Target Name  : Student_Cuda_mse22_cuda_118_x86_64
-[CBI] -> Location     : /tmp/ramdrive/mse22/Targets/Student_Cuda_mse22/bin/Student_Cuda_mse22_cuda_118_x86_64.run
+[CBI] -> Target Name  : Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64
+[CBI] -> Location     : /tmp/ramdrive/mse22/Targets/Student_Cuda_Tools_Recution_mse22/bin/Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64.run
 [CBI] -> Deploy 	  : ../RELEASE/bin
 [CBI] ->
 [CBI] -> Type	 	  : EXE
@@ -436,14 +465,14 @@ Build cuda_11.8.r11.8/compiler.31833905_0
 [CBI] ->
 [CBI] -> Compilateur  : g++ && nvcc
 [CBI] -> Task		  : End Compiling-Linking !
-[CBI] -> Time		  : 4 (s)
+[CBI] -> Time		  : 5 (s)
 ==================================================================================
 
 
-[CBI] -> Deploying      : ../RELEASE/bin/Student_Cuda_mse22_cuda_118_x86_64.run
+[CBI] -> Deploying      : ../RELEASE/bin/Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64.run
 
 [CBI] -> Symlink Project Inc
 [CBI] -> To update code completion : ctrl-shift-s   or   gui/index/rebuild
 
-[CBI] -> Student_Cuda_mse22_cuda_118_x86_64 : End ALL!
+[CBI] -> Student_Cuda_Tools_Recution_mse22_cuda_118_x86_64 : End ALL!
 

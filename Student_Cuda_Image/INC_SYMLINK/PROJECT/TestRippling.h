@@ -1,1 +1,1 @@
-/home/bilat/CBI/Dropbox/02_CBI_LINUX/CoursCuda/toStudent/code/WCudaStudent/Student_Cuda_Image/src/cpp/test/unit/01_Test_Rippling/TestRippling.h
+/home/mse22/CUDA/toStudent/code/WCudaStudent/Student_Cuda_Image/src/cpp/test/unit/01_Test_Rippling/TestRippling.h

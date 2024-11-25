@@ -71,9 +71,9 @@ int mainBrutforce()
 
     // Slice
 	{
-	sliceGMHOST(&matlab);
-	// sliceGM(&matlab);
-	// sliceSM(&matlab);
+	//sliceGMHOST(&matlab);
+//	sliceGM(&matlab);
+	 sliceSM(&matlab);
 	}
 
     // Montecarlo

@@ -26,6 +26,37 @@ __global__ void rippling3DCuda(float3* tabVerticesXYZGM , uchar4* tabVerticesCol
     //		(I2) 	domaineMath pas utiliser ici
 
     // TODO
+
+//    Rippling3DMath rippling3DMath(n);
+
+    const int TID = Thread2D::tid();
+    const int NB_THREAD = Thread2D::nbThread();
+
+    const int WH = w * h;
+
+//    float x;
+//    float y;
+//    float DX;
+//    float DY;
+    int i, j;
+//    int vertexI;
+//    int vertexJ;
+
+//    Rippling3DMath.delta(w, h, &DX, &DY);
+
+    int s = TID;
+    while (s < WH)
+	{
+	Indices::toIJ(s, w, &i, &j); // update (vertexI, vertexJ)
+
+//	Rippling3DMath.toXY(DX, DY, vertexI, vertexJ, &x, &y);
+
+	rippling3DMath.xyz(&tabVerticesColorGM[s], &tabVerticesXYZGM[s], i, j); // update (sommet s , color s)
+
+	s += NB_THREAD;
+	}
+
+
     }
 
 /*----------------------------------------------------------------------*\

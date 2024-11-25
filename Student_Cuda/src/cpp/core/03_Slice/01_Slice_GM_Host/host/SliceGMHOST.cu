@@ -35,6 +35,7 @@ SliceGMHOST::SliceGMHOST(Grid grid , int nbSlice , double* ptrPiHat , bool isVer
 //
 	nbSlice(nbSlice), //
 	ptrPiHat(ptrPiHat) //
+
     {
     // ntabGM
 	{
@@ -46,7 +47,9 @@ SliceGMHOST::SliceGMHOST(Grid grid , int nbSlice , double* ptrPiHat , bool isVer
 
     // MM
 	{
-	this->sizeTabGM =n*sizeof(float);//  TODO SliceGMHOST // la taille en octet de tabGM [octet]
+	this->sizeTabGM = sizeof(float)*nTabGM;//  TODO SliceGMHOST // la taille en octet de tabGM [octet]
+	GM::malloc(&tabGM, sizeTabGM);
+
 
 	}
     }
@@ -56,8 +59,7 @@ SliceGMHOST::~SliceGMHOST(void)
     //MM (device free)
 	{
 	// TODO SliceGMHOST
-	GM::free(ptrGMV1);
-
+	GM::free(tabGM);
 	}
     }
 
@@ -80,13 +82,13 @@ SliceGMHOST::~SliceGMHOST(void)
 void SliceGMHOST::run()
     {
     // TODO SliceGMHOST // call the kernel
-    reductionIntraThreadGMHOST<<<dg,db>>>(float* tabGM,int nbSlice);
 
     // Indication:
     // 		dg et db sont stokcer dans la classe parente
     // 		vous pouvez les utiliser directement
     // 		exemple : reductionIntraThreadGMHOST<<<dg,db>>>(...)
 
+    reductionIntraThreadGMHOST<<<dg,db>>>(tabGM, nbSlice);
     reductionHost();
     }
 
@@ -99,13 +101,29 @@ void SliceGMHOST::run()
  */
 void SliceGMHOST::reductionHost()
     {
+
     // 1) Creer un tableau de bonne dimension (sur la pile, possible ssi petit, sinon sur la tas)
     // 2) Transferer la tabGM dedans
     // 3) Reduction sequentiel cote host
     // 4) finalisation du calcul de ptrPiHat
 
     // TODO SliceGMHOST
+
+	float tab[this->nTabGM];
+
+	GM::memcpyDToH(tab, tabGM, sizeTabGM);
+
+	double somme = 0;
+
+	for (int i = 0; i < this->nTabGM; i++)
+	    {
+		somme += tab[i];
+	    }
+
+	*ptrPiHat = somme;
     }
+
+
 
 /*----------------------------------------------------------------------*\
  |*			End	 					*|

@@ -49,9 +49,9 @@ int mainUse()
 	isOk &= useReductionIntII.isOk(IS_VERBOSE);
 
 	// long
-	UseReductionLongII useReductionLongII(IS_VERBOSE);
+	 UseReductionLongII useReductionLongII(IS_VERBOSE);
 
-	isOk &= useReductionLongII.isOk(IS_VERBOSE);
+	 isOk &= useReductionLongII.isOk(IS_VERBOSE);
 	}
 
     ptrChrono->stop();

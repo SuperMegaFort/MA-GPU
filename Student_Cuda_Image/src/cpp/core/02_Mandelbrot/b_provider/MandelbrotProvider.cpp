@@ -23,22 +23,28 @@ Grid MandelbrotProvider::grid()
 
     // fp64 (float 64 bits)
 #ifdef MANDELBROT_DOUBLE
-    assert(false); // to be removed once implemented
+    // assert(false); // to be removed once implemented
     Grid grid; //TODO Mandelbrot
+    dim3 dg(MP, 1, 1); //
+    dim3 db(CORE_MP, 5, 1); // produit <=1024
     return grid;
 #endif
 
     // fp32 (float 32 bits)
 #ifdef MANDELBROT_FLOAT
-    assert(false); // to be removed once implemented
+    // assert(false); // to be removed once implemented
     Grid grid; //TODO Mandelbrot
+    dim3 dg(MP, 1, 1); //
+    dim3 db(CORE_MP, 5, 1); // produit <=1024
     return grid;
 #endif
 
     // fp16 (float 16 bits)
 #ifdef MANDELBROT_HALF
-    assert(false); // to be removed once implemented
+    // assert(false); // to be removed once implemented
     Grid grid; //TODO Mandelbrot
+    dim3 dg(MP, 1, 1); //
+    dim3 db(CORE_MP, 5, 1); // produit <=1024
     return grid;
 #endif
 

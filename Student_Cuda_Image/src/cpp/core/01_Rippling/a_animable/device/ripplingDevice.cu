@@ -20,8 +20,8 @@ static __device__ void ripplingQuart(uchar4* tabPixelsGM , uint w , uint h , flo
 
 __global__ void rippling(uchar4* tabPixelsGM , uint w , uint h , float t)
     {
-    ripplingBaseline(tabPixelsGM, w, h, t);
-   // ripplingDemi(tabPixelsGM, w, h, t);
+    //ripplingBaseline(tabPixelsGM, w, h, t);
+    ripplingDemi(tabPixelsGM, w, h, t);
    // ripplingQuart(tabPixelsGM, w, h, t);
     }
 
@@ -37,9 +37,25 @@ __device__ void ripplingBaseline(uchar4* tabPixelsGM , uint w , uint h , float t
     {
     // TODO instacier RipplingMath
 
+    RipplingMath ripplingMath(w,h,t);
+
     const int TID = Thread2D::tid();
     const int NB_THREAD = Thread2D::nbThread();
     const int WH = w * h;
+
+    int i;
+    int j;
+
+    int s = TID;
+    while (s < WH)
+	{
+	Indices::toIJ(s, w, &i, &j);
+
+	ripplingMath.colorIJ(&tabPixelsGM[s], i, j);
+	//tabPixelsGM[WH-S]
+
+	s += NB_THREAD;
+	}
 
     // TODO Rippling GPU  pattern entrelacement
     }
@@ -57,6 +73,29 @@ __device__ void ripplingDemi(uchar4* tabPixelsGM , uint w , uint h , float t)
     //			Partez de la fin de l'image, peut-etre
 
     // TODO Rippling GPU
+
+    RipplingMath ripplingMath(w,h,t);
+
+    const int TID = Thread2D::tid();
+    const int NB_THREAD = Thread2D::nbThread();
+    const int WH = w * h;
+
+    int i;
+    int j;
+
+    int s = TID;
+
+    while (s < WH/2)
+	{
+	Indices::toIJ(s, w, &i, &j);
+
+	ripplingMath.colorIJ(&tabPixelsGM[s], i, j);
+
+	tabPixelsGM[WH-s-1] = tabPixelsGM[s];
+
+	s += NB_THREAD;
+	}
+
     }
 
 /**
@@ -76,6 +115,7 @@ __device__ void ripplingQuart(uchar4* tabPixelsGM , uint w , uint h , float t)
     //		(C1)	Utiliser toujours le pattern d'entrelacement
 
     // TODO Rippling GPU
+
     }
 
 /*----------------------------------------------------------------------*\

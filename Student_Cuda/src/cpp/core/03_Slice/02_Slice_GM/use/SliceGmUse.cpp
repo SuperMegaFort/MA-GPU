@@ -135,11 +135,9 @@ Grid SliceGmUse::createGrid()
     //		(I3)	 Quel est l'heuristic a suivre pour dg?
     //		(I4)	 Peux t'on respecter la contrainte et les deux heuristics?
 
-    dim3 dg;// TODO SliceGM
-    dim3 db;// TODO SliceGM
-    Grid grid(dg,db,IS_CHECK_HEURISTIC);
-
-    assert(false); // to remove once coded
+    dim3 dg(64, 2, 1);
+    dim3 db(64, 2, 1);
+    Grid grid(dg,db);
 
     return grid;
     }

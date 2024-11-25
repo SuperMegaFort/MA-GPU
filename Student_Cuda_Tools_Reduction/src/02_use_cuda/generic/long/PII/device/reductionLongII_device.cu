@@ -30,6 +30,10 @@ static __device__ void addAtomic(long* ptrX , long y);
 __global__ void KLongProtocoleII(long* ptrSumGM)
     {
     // TODO ReductionLongII
+    extern __shared__ long tabSM[];
+    reductionIntraThread(tabSM);
+    __syncthreads();
+    Reduction::reduce(add, addAtomic, tabSM, ptrSumGM);
     }
 
 /*--------------------------------------*\
@@ -75,6 +79,11 @@ __device__ void reductionIntraThread(long* tabSM)
 
     // pour TID       utiliser const long TID=Thread2D_long::tid();		// (nouvelle methode)
     // pour TID_LOCAL utiliser const int TID_LOCAL=Thread2D::tidLocal();	// (methode habituelle)
+    const long TID_loc = Thread2D_long::tidLocal();
+    const long TID = Thread2D_long::tid();
+
+    tabSM[TID_loc] = TID;
+
     }
 
 
@@ -85,6 +94,7 @@ __device__ void reductionIntraThread(long* tabSM)
 __device__ long add(long x , long y)
     {
     // TODO ReductionLongII
+    return x+y;
     }
 
 /**
@@ -103,7 +113,7 @@ __device__ void addAtomic(long* ptrX , long y)
     locker.lock();
 
     // TODO ReductionLongII
-
+    *ptrX = *ptrX +y;
     locker.unlock();
     }
 

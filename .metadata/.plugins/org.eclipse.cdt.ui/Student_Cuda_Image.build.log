@@ -1,4 +1,4 @@
-10:42:59 **** Build of configuration CudaGCC_parallel for project Student_Cuda_Image ****
+13:35:32 **** Incremental Build of configuration CudaGCC_parallel for project Student_Cuda_Image ****
 cbicc cuda jall 
 
 --------------------------------------------------------
@@ -34,7 +34,7 @@ cbicc cuda jall
 
 [cudnn]      : /opt/api/ext/cudnn
 
-[tensorRT]      : /opt/api/ext/tensorRT
+[tensorRT]      : /opt/api/ext/tensorRT/cu118/10.4.0.26
 
 [jetson-inference]         : /opt/api/ext/jetson-inference
 
@@ -92,15 +92,15 @@ Build cuda_11.8.r11.8/compiler.31833905_0
 
 
 ==================================================================================
-[CBI] -> Target Name  : Student_Cuda_Image_bilat_cuda_118_x86_64
+[CBI] -> Target Name  : Student_Cuda_Image_mse22_cuda_118_x86_64
 [CBI] ->
-[CBI] -> Build        : /tmp/ramdrive/bilat/Targets/Student_Cuda_Image_bilat/bin/Student_Cuda_Image_bilat_cuda_118_x86_64.run
+[CBI] -> Build        : /tmp/ramdrive/mse22/Targets/Student_Cuda_Image_mse22/bin/Student_Cuda_Image_mse22_cuda_118_x86_64.run
 [CBI] -> Deploy       : ../RELEASE/bin
 [CBI] ->
 [CBI] -> Type	      : EXE
 [CBI] -> Arch	      : x86_64
 [CBI] -> OS	 		  : Linux
-[CBI] -> User	 	  : bilat
+[CBI] -> User	 	  : mse22
 [CBI] ->
 [CBI] -> Task		  : Compiling-Linking !
 ==================================================================================
@@ -457,39 +457,74 @@ Build cuda_11.8.r11.8/compiler.31833905_0
 [CBI] ->              : opencv_video_gcc
 [CBI] ->              : opencv_videoio_gcc
 
-[CBI] -> Create folder : /tmp/ramdrive/bilat/Targets/Student_Cuda_Image_bilat/cubin
+[CBI] -> Create folder : /tmp/ramdrive/mse22/Targets/Student_Cuda_Image_mse22/bin
+[CBI] -> Create folder : /tmp/ramdrive/mse22/Targets/Student_Cuda_Image_mse22/obj
+[CBI] -> Create folder : /tmp/ramdrive/mse22/Targets/Student_Cuda_Image_mse22/cubin
 
 [CBI] -> Compilation parallel (36 threads)
 
-[Student_Cuda_Image_bilat_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/01_Rippling/a_animable/device/ripplingDevice.cu
-[Student_Cuda_Image_bilat_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/01_Rippling/a_animable/host/Rippling.cu
-[Student_Cuda_Image_bilat_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/03_RayTracing/a_animable/device/raytracingDevice.cu
-[Student_Cuda_Image_bilat_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/03_RayTracing/a_animable/host/Raytracing.cu
-[Student_Cuda_Image_bilat_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/03_RayTracing/a_animable/host/tools/SphereCreator.cu
-[Student_Cuda_Image_bilat_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/02_Mandelbrot/a_animable/device/mandelbrotDevice.cu
-[Student_Cuda_Image_bilat_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/02_Mandelbrot/a_animable/host/Mandelbrot.cu
-src/cpp/core/01_Rippling/a_animable/device/ripplingDevice.cu(42): warning #177-D: variable "WH" was declared but never referenced
-
-src/cpp/core/01_Rippling/a_animable/device/ripplingDevice.cu(51): warning #177-D: function "ripplingDemi" was declared but never referenced
-
-src/cpp/core/01_Rippling/a_animable/device/ripplingDevice.cu(66): warning #177-D: function "ripplingQuart" was declared but never referenced
-
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/main.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/core/01_Rippling/b_provider/RipplingProvider.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/core/03_RayTracing/b_provider/RaytracingCreator.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/core/03_RayTracing/b_provider/RaytracingProviderCM2SM.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/core/03_RayTracing/b_provider/RaytracingProviderGM.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/core/03_RayTracing/b_provider/RaytracingProviderCM.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/core/03_RayTracing/b_provider/RaytracingProviderSM.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/core/02_Mandelbrot/b_provider/MandelbrotProvider.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/test/unit/01_Test_Rippling/TestRippling.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/test/unit/02_Test_Mandelbrot/TestMandelbrot.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/test/unit/03_Test_Raytracing/cm2sm/TestRaytracingCM2SM.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/test/unit/03_Test_Raytracing/gm/TestRaytracingGM.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/test/unit/03_Test_Raytracing/cm/TestRaytracingCM.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/test/unit/03_Test_Raytracing/sm/TestRaytracingSM.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/main/mainBenchmark.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/main/mainBruteforce.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/main/mainImage.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> g++ compiling .cpp : src/cpp/main/mainTest.cpp
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/01_Rippling/a_animable/device/ripplingDevice.cu
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/01_Rippling/a_animable/host/Rippling.cu
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/03_RayTracing/a_animable/device/raytracingDevice.cu
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/03_RayTracing/a_animable/host/Raytracing.cu
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/03_RayTracing/a_animable/host/tools/SphereCreator.cu
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/02_Mandelbrot/a_animable/device/mandelbrotDevice.cu
+[Student_Cuda_Image_mse22_cuda_118_x86_64] -> nvcc compiling .cu : src/cpp/core/02_Mandelbrot/a_animable/host/Mandelbrot.cu
 src/cpp/core/03_RayTracing/a_animable/device/raytracingDevice.cu(81): warning #177-D: function "work" was declared but never referenced
 
 src/cpp/core/03_RayTracing/a_animable/device/raytracingDevice.cu(124): warning #177-D: function "copyDevtoSM(float *, float *, int)" was declared but never referenced
 
 src/cpp/core/03_RayTracing/a_animable/device/raytracingDevice.cu(98): warning #177-D: function "copyDevtoSM(Sphere *, Sphere *, int)" was declared but never referenced
 
-src/cpp/core/02_Mandelbrot/a_animable/device/mandelbrotDevice.cu(32): warning #177-D: variable "x" was declared but never referenced
+src/cpp/core/01_Rippling/a_animable/device/ripplingDevice.cu(36): warning #177-D: function "ripplingBaseline" was declared but never referenced
 
-src/cpp/core/02_Mandelbrot/a_animable/device/mandelbrotDevice.cu(33): warning #177-D: variable "y" was declared but never referenced
+src/cpp/core/01_Rippling/a_animable/device/ripplingDevice.cu(105): warning #177-D: function "ripplingQuart" was declared but never referenced
 
-src/cpp/core/02_Mandelbrot/a_animable/device/mandelbrotDevice.cu(57): warning #177-D: function "fill" was declared but never referenced
+src/cpp/main/mainTest.cpp: In function ‘int mainTest()’:
+src/cpp/main/mainTest.cpp:39:28: warning: ‘template<class> class std::auto_ptr’ is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]
+   39 |         testSuite.add(std::auto_ptr < Suite > (new TestRippling()));
+      |                            ^~~~~~~~
+In file included from /usr/include/c++/11/bits/locale_conv.h:41,
+                 from /usr/include/c++/11/locale:43,
+                 from /usr/include/c++/11/iomanip:43,
+                 from src/cpp/main/mainTest.cpp:4:
+/usr/include/c++/11/bits/unique_ptr.h:57:28: note: declared here
+   57 |   template<typename> class auto_ptr;
+      |                            ^~~~~~~~
+src/cpp/main/mainTest.cpp:44:28: warning: ‘template<class> class std::auto_ptr’ is deprecated: use 'std::unique_ptr' instead [-Wdeprecated-declarations]
+   44 |         testSuite.add(std::auto_ptr < Suite > (new TestMandelbrot));
+      |                            ^~~~~~~~
+In file included from /usr/include/c++/11/bits/locale_conv.h:41,
+                 from /usr/include/c++/11/locale:43,
+                 from /usr/include/c++/11/iomanip:43,
+                 from src/cpp/main/mainTest.cpp:4:
+/usr/include/c++/11/bits/unique_ptr.h:57:28: note: declared here
+   57 |   template<typename> class auto_ptr;
+      |                            ^~~~~~~~
+src/cpp/core/02_Mandelbrot/a_animable/device/mandelbrotDevice.cu(75): warning #177-D: function "fill" was declared but never referenced
 
-src/cpp/core/02_Mandelbrot/a_animable/device/mandelbrotDevice.cu(75): warning #177-D: function "color" was declared but never referenced
+src/cpp/core/02_Mandelbrot/a_animable/device/mandelbrotDevice.cu(93): warning #177-D: function "color" was declared but never referenced
 
 
-[CBI] -> Linking to   : /tmp/ramdrive/bilat/Targets/Student_Cuda_Image_bilat/bin/Student_Cuda_Image_bilat_cuda_118_x86_64.run
+[CBI] -> Linking to   : /tmp/ramdrive/mse22/Targets/Student_Cuda_Image_mse22/bin/Student_Cuda_Image_mse22_cuda_118_x86_64.run
 
 [CBI] -> Library Link :
 [CBI] ->
@@ -603,28 +638,28 @@ src/cpp/core/02_Mandelbrot/a_animable/device/mandelbrotDevice.cu(75): warning #1
 
 
 ==================================================================================
-[CBI] -> Target Name  : Student_Cuda_Image_bilat_cuda_118_x86_64
-[CBI] -> Location     : /tmp/ramdrive/bilat/Targets/Student_Cuda_Image_bilat/bin/Student_Cuda_Image_bilat_cuda_118_x86_64.run
+[CBI] -> Target Name  : Student_Cuda_Image_mse22_cuda_118_x86_64
+[CBI] -> Location     : /tmp/ramdrive/mse22/Targets/Student_Cuda_Image_mse22/bin/Student_Cuda_Image_mse22_cuda_118_x86_64.run
 [CBI] -> Deploy 	  : ../RELEASE/bin
 [CBI] ->
 [CBI] -> Type	 	  : EXE
 [CBI] -> Arch	 	  : x86_64
 [CBI] -> OS	 	      : Linux
-[CBI] -> User	 	  : bilat
+[CBI] -> User	 	  : mse22
 [CBI] ->
 [CBI] -> Compilateur  : g++ && nvcc
 [CBI] -> Task		  : End Compiling-Linking !
-[CBI] -> Time		  : 4 (s)
+[CBI] -> Time		  : 5 (s)
 ==================================================================================
 
 
-[CBI] -> Deploying      : ../RELEASE/bin/Student_Cuda_Image_bilat_cuda_118_x86_64.run
+[CBI] -> Deploying      : ../RELEASE/bin/Student_Cuda_Image_mse22_cuda_118_x86_64.run
 
 [CBI] -> Symlink Project Inc
 [CBI] -> To update code completion : ctrl-shift-s   or   gui/index/rebuild
 
-[CBI] -> Student_Cuda_Image_bilat_cuda_118_x86_64 : End ALL!
+[CBI] -> Student_Cuda_Image_mse22_cuda_118_x86_64 : End ALL!
 
 
-10:43:05 Build Finished. 0 errors, 10 warnings. (took 6s.32ms)
+13:35:39 Build Finished. 0 errors, 9 warnings. (took 7s.27ms)
 

@@ -34,8 +34,8 @@ SliceSM::SliceSM(const Grid& grid , int nbSlice , double* ptrPiHat , bool isVerb
 	ptrPiHat(ptrPiHat), //
 	nbSlice(nbSlice) //
     {
-    this->sizeSM = -1; //TODO SliceSM
-
+    this->sizeSM = grid.threadByBlock() * sizeof(float); //TODO SliceSM
+    GM::mallocFloat0(&ptrPiHatGM);
     // MM
 	{
 	// TODO SliceSM (pas oublier de mettre a zero, avec mallocfloat0 par exemple)
@@ -49,6 +49,7 @@ SliceSM::SliceSM(const Grid& grid , int nbSlice , double* ptrPiHat , bool isVerb
 SliceSM::~SliceSM(void)
     {
     // TODO SliceSM
+    GM::free(ptrPiHatGM);
     }
 
 /*--------------------------------------*\
@@ -62,6 +63,12 @@ void SliceSM::run()
     // Etape 3 : finaliser le calcul de PI
 
     // TODO SliceSM
+    sliceSM<<<dg, db, sizeSM>>>(nbSlice, ptrPiHatGM);
+
+    float resultat;
+    GM::memcpyDToH_float(&resultat, ptrPiHatGM);
+
+    *ptrPiHat = resultat;
     }
 
 // BruteForce:

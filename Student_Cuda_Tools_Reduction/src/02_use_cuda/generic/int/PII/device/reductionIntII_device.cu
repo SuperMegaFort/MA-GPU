@@ -28,6 +28,10 @@ static __device__ void addAtomicV2(int* ptrX , int y);
 __global__ void KIntProtocoleII(int* ptrSumGM)
     {
     // TODO ReductionIntII
+    extern __shared__ int tabSM[];
+    reductionIntraThread(tabSM);
+    __syncthreads();
+    Reduction::reduce(add, addAtomicV1, tabSM, ptrSumGM);
     }
 
 /*--------------------------------------*\
@@ -40,6 +44,10 @@ __global__ void KIntProtocoleII(int* ptrSumGM)
 __device__ void reductionIntraThread(int* tabSM)
     {
     // TODO ReductionIntII
+    const int TID_loc = Thread2D::tidLocal();
+    const int TID = Thread2D::tid();
+
+    tabSM[TID_loc] = TID;
     }
 
 /*----------------------------*\
@@ -49,6 +57,7 @@ __device__ void reductionIntraThread(int* tabSM)
 __device__ int add(int x , int y)
     {
     // TODO ReductionIntII
+    return x+y;
     }
 
 
@@ -59,6 +68,7 @@ __device__ int add(int x , int y)
 __device__ void addAtomicV1(int* ptrX , int y)
     {
     // TODO ReductionIntII
+    atomicAdd(ptrX, y);
     }
 
 /**
@@ -72,7 +82,7 @@ __device__ void addAtomicV2(int* ptrX , int y)
     locker.lock();
 
     // TODO ReductionIntII
-
+    *ptrX = *ptrX +y;
     locker.unlock();
     }
 

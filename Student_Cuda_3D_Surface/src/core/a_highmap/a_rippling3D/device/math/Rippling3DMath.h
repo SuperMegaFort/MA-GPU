@@ -46,6 +46,14 @@ class Rippling3DMath
 	    //	- la hauteur
 
 	    float levelGrayFloat0255 = levelGray(i, j); // car la surface sera plus "lisse" en float qu'en uchar et z peut etre en float.
+	    uchar levelGris = static_cast<uchar>(levelGrayFloat0255);
+
+	    ptrColorIJGM->x = levelGris;
+	    ptrColorIJGM->y = levelGris;
+	    ptrColorIJGM->z = levelGris;
+
+	    ptrColorIJGM->w = 255;
+
 
 	    // color
 		{
@@ -63,6 +71,8 @@ class Rippling3DMath
 		//			- decaler de dim2 sur l'axe des y
 
 		// TODO RIPPLING 3D
+
+
 		}
 
 	    // sommet (float3 est une structure a 3 champs x y et z (3 float)
@@ -70,6 +80,9 @@ class Rippling3DMath
 		// Indication : pour la hauteur z utiliser 6 x levelGrayFloat0255s (plus joli)
 
 		// TODO RIPPLING 3D
+		ptrSommetXYZGM->x = j - dim2;
+		ptrSommetXYZGM->y = i - dim2;
+		ptrSommetXYZGM->z = 3.0f * levelGrayFloat0255;
 		}
 	    }
 
@@ -84,7 +97,18 @@ class Rippling3DMath
 	float levelGray(int i , int j ) // en float in [0,255]
 	    {
 	    // TODO RIPPLING 3D
-	    return -1;
+
+	    float result;
+	    dij(i, j, &result); // warning : dij return void. Ne peut pas etre "imbriquer dans une fonction"
+
+	    result = result / 10.f;
+	    // TODO Rippling GPU : cf formules math rippling.pdf
+	    float nume = cosf(result -t/7);
+	    float denum = result+1;
+	    // *ptrLevelGray = 128 + 127*(nume/denum);
+	    return 128.0f + 127.0f * (nume / denum);
+
+	    // return -1;
 	    }
 
 	__inline__
@@ -92,6 +116,17 @@ class Rippling3DMath
 	void dij(int i , int j, float* ptrResult )
 	    {
 	    // TODO RIPPLING 3D
+
+	    // float fi;
+	    // float fj;
+	    // fi = i-dim2;
+	    // fj = j-dim2;
+	    // *ptrResult = sqrt(fi*fi + fj*fj);
+
+	    float fi = i - dim2;
+	    float fj = j - dim2;
+	    *ptrResult = sqrtf(fi * fi + fj * fj);
+
 	    }
 
 	/*--------------------------------------*\

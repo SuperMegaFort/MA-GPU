@@ -119,10 +119,15 @@ RunnableGPU_I* SliceGmHostUse::getRunnableGPU()
 Grid SliceGmHostUse::createGrid()
     {
     const int MP = Hardware::getMPCount();
-
+    const int CORE_MP = Hardware::getCoreCountMP();
     // Grid 1D
-    Grid grid; // TODO SliceGMHost contrainte : produit<=1024
-    assert(false); // to remove once coded
+//    Grid grid; // TODO SliceGMHost contrainte : produit<=1024
+
+dim3 dg(MP, 2, 1);
+dim3 db(CORE_MP, 2, 1);
+
+    Grid grid(dg, db);
+//    assert(false); // to remove once coded
 
     return grid;
     }

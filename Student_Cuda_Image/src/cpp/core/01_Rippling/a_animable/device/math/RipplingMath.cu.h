@@ -39,6 +39,8 @@ class RipplingMath
 	__device__
 	void colorIJ(uchar4* ptrColorIJ , int i , int j)
 	    {
+
+
 	    uchar levelGris;
 
 	    levelGray(i, j, &levelGris); // update levelGris
@@ -62,6 +64,8 @@ class RipplingMath
 	    //		ptrColorIJ->z = 128;
 	    //		ptrColorIJ->w = 255; // opacity facultatif
 	    //		}
+
+
 	    }
 
     private:
@@ -74,6 +78,9 @@ class RipplingMath
 	    dij(i, j, &result); // warning : dij return void. Ne peut pas etre "imbriquer dans une fonction"
 
 	    result = result / 10.f;
+
+	    *ptrLevelGray = 128.0f + 127.0f * (cosf(result-(t/7.0f))/(result + 1.0f));
+
 	    // TODO Rippling GPU : cf formules math rippling.pdf
 	    }
 
@@ -82,6 +89,14 @@ class RipplingMath
 	void dij(int i , int j , float* ptrResult)
 	    {
 	    //TODO Rippling GPU cf fonction math pdf
+
+	    float fi = i - dim2;
+	    float fj = j - dim2;
+
+	    float fi_squared = fi * fi;
+	    float fj_squared = fj * fj;
+
+	    *ptrResult = sqrtf(fi_squared + fj_squared);
 
 	    // Ne pas utiliser la fonction pow pour elever au carrer !
 	    // Utiliser l'opérateur *

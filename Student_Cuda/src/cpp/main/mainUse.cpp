@@ -49,28 +49,28 @@ int mainUse()
 
     // hello : addSCalar
 	{
-	//isOk &= addScalar_procedurale();
-	//isOk &= addScalar_objet();
+//	isOk &= addScalar_procedurale();
+//	isOk &= addScalar_objet();
 	}
 
     // AddArray
 	{
 	// Patern entrelacement
 	    {
-	    AddArrayUse addArrayUse;
-	    isOk &= addArrayUse.isOk();
+//	    AddArrayUse addArrayUse;
+//	    isOk &= addArrayUse.isOk();
 	    }
 
 	// Patern 11
-//	    {
+	    {
 //	    AddArrayUse11 addArrayUse11;
 //	    isOk &= addArrayUse11.isOk();
-//	    }
+	    }
 	}
 
-    Slice
+    // Slice
 	{
-//	SliceGmHostUse sliceGmHostUse(IS_VERBOSE);
+	SliceGmHostUse sliceGmHostUse(IS_VERBOSE);
 //	SliceGmUse sliceGmUse(IS_VERBOSE);
 //	SliceSmUse sliceSmUse(IS_VERBOSE);
 //
@@ -79,7 +79,7 @@ int mainUse()
 //	isOk &= sliceSmUse.isOk(IS_VERBOSE);
 	}
 
-    // Montecarlo
+   // Montecarlo
 //	{
 //	for (float h = 4; h <= 10; h = h + 1)
 //	    {

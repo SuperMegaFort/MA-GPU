@@ -39,14 +39,13 @@ SliceGM::SliceGM(Grid grid , int nbSlice , double* ptrPiHat , bool isVerbose) :
     {
     // ntabGM
 	{
-	this->nTabGM = -1; // TODO SliceGM
-
+	this->nTabGM = grid.threadCounts(); // TODO SliceGM
 	}
 
     // MM
 	{
-	this->sizeTabGM = -1; //  TODO SliceGM // [octet]
-
+	this->sizeTabGM = nTabGM * sizeof(float); //  TODO SliceGM // [octet]
+	GM::malloc(&tabGM, sizeTabGM);
 	}
     }
 
@@ -55,6 +54,7 @@ SliceGM::~SliceGM(void)
     //MM (device free)
 	{
 	//TODO SliceGM
+	GM::free(tabGM);
 	}
     }
 
@@ -78,6 +78,8 @@ void SliceGM::run()
     {
     //TODO SliceGM // call the kernel (asynchrone)
 
+    reductionIntraThreadGM<<<dg, db>>>(tabGM, nbSlice);
+
     reductionGM();
     }
 
@@ -90,22 +92,39 @@ void SliceGM::run()
  * Etape 2 : recuperer le resultat coter host
  * Etape 3 : finaliser le calcule de PI
  */
+
+
+
 void SliceGM::reductionGM()
     {
-    int midle = nTabGM >> 1; // nTabGM/2;
+    int middle = nTabGM >> 1; // nTabGM/2;
 
-    // TODO SliceGM
 
-    // Warning:		Utiliser une autre grille que celle heriter de la classe parente dg, db
-    // 			Votre grid ici doit avoir une taille speciale!
-    // 			N'utiliser donc pas les variables dg et db de la classe parentes
+    // Warning:  Utiliser une autre grille que celle heriter de la classe parente dg, db
+    //    Votre grid ici doit avoir une taille speciale!
+    //    N'utiliser donc pas les vraibales dg et db de la super classe
 
-    // Tip:		Il y a une methode dedier pour ramener un float cote host
+    // Tip:  Il y a une methode dedier pour ramener un float cote host
     //
-    //				float resultat;
-    //				GM::memcpyDToH_float(&resultat,ptrResultGM);
+    //    float resultat;
+    //    GM::memcpyDtoH_float(&resultat,ptrResultGM);
 
+    dim3 dg_reduction(middle, 1, 1);
+    dim3 db_reduction(1, 1, 1);
+
+    while (middle > 0)
+     {
+     ecrasementGM<<<dg_reduction,db_reduction>>>(tabGM, middle);
+     middle = middle >> 1;
+     dg_reduction.x = middle;
+     }
+
+    float resultat;
+    GM::memcpyDToH_float(&resultat, &tabGM[0]);
+
+    *ptrPiHat = resultat;
     }
+
 
 // BruteForce:
 //

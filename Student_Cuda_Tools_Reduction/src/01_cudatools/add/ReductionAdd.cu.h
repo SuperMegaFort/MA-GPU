@@ -46,7 +46,7 @@ class ReductionAdd
 	 *
 	 */
 	template <typename T>
-	static __device__ void reduce(T* tabSM, T* ptrResultGM)
+	static __device__ void reduce(T* tabSM, T* ptrResultGM) // pointeur type T permet d'utiliser différents types de variables
 	    {
 	    // Rappel :
 	    // 		|ThreadByBlock|=|tabSM| .
@@ -57,7 +57,9 @@ class ReductionAdd
 	    // TODO ReductionAdd
 	    // reductionIntraBlock
 	    // reductionInterblock
-
+	    reductionIntraBlock(tabSM);
+	    reductionInterBlock(tabSM, ptrResultGM);
+	    //__syncthreads();
 	    // __syncthreads();// pour touts les threads d'un meme block, necessaires? ou?
 	    }
 
@@ -81,6 +83,12 @@ class ReductionAdd
 	    // TODO ReductionAdd
 
 	    // __syncthreads();// pour touts les threads d'un meme block, necessaires? ou?
+	    const int TID_local = Thread2D::tidLocal();
+
+	    if (TID_local < middle)
+		{
+		tabSM[TID_local] = tabSM[TID_local] + tabSM[TID_local+middle];
+		}
 
 	    }
 
@@ -95,6 +103,17 @@ class ReductionAdd
 	    // TODO ReductionAdd
 
 	    // __syncthreads();// pour touts les threads d'un meme block, necessaires? ou?
+
+	    int n = Thread2D::nbThreadBlock();
+	    int m = n>>1;
+
+	    while(m>0)
+		{
+		ecrasement(tabSM, m);
+		m >>= 1 ;
+		__syncthreads(); //attend que les threads d'un même block aient finis avant de continuer
+		}
+
 	    }
 
 	/*--------------------------------------*\
@@ -111,6 +130,12 @@ class ReductionAdd
 	    // TODO ReductionAdd
 
 	    // __syncthreads();// pour touts les threads d'un meme block, necessaires? ou?
+	    const int TID_local = Thread2D::tidLocal();
+	    if(TID_local==0)
+		{
+		atomicAdd(ptrResultGM, tabSM[0]); // addition atomic de tout les tabSM[0] dans ptrResultGM
+		}
+
 	    }
 
     };

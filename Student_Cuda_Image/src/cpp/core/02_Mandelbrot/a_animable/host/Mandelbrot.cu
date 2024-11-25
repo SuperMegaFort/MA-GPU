@@ -59,9 +59,10 @@ void Mandelbrot::process(uchar4* tabPixelsGM , uint w , uint h , const DomaineMa
     {
     int n = t;
 
-    assert(false); // to be removed once implemented
+    // assert(false); // to be removed once implemented
     // TODO Mandelbrot GPU
     // lauch kernel (line 18)
+    mandelbrot<<<dg,db>>>(tabPixelsGM, w, h,domaineMath, n);
     }
 
 /**

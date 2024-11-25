@@ -40,10 +40,10 @@ int mainTest()
     {
     Suite testSuite;
 
-     Slice
+     //Slice
 	{
-	testSuite.add(std::auto_ptr < Suite > (new TestSliceGMHOST()));
-//	testSuite.add(std::auto_ptr < Suite > (new TestSliceGM()));
+//	testSuite.add(std::auto_ptr < Suite > (new TestSliceGMHOST()));
+	testSuite.add(std::auto_ptr < Suite > (new TestSliceGM()));
 //	testSuite.add(std::auto_ptr < Suite > (new TestSliceSM()));
 	}
 
@@ -98,7 +98,7 @@ int mainTest()
 // run
 	{
 	string folder = "./out";
-	string title = "testAll"; // see above, title list
+	string title = "testSliceGM"; // see above, title list
 	string fileHTML = title + ".html";
 
 	Folders::mkdirP(folder);

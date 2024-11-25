@@ -33,12 +33,14 @@ ReductionIntI::ReductionIntI(const Grid& grid , int* ptrSum,bool isVerbose) :
 	ptrSum(ptrSum)
     {
     // TODO ReductionIntI
-    this->sizeSM = -1;
+    this->sizeSM = sizeof(int)*grid.threadByBlock();
+    GM::mallocInt0(&ptrSumGM);
     }
 
 ReductionIntI::~ReductionIntI()
     {
     // TODO ReductionIntI
+    GM::free(ptrSumGM);
     }
 
 /*--------------------------------------*\
@@ -48,6 +50,8 @@ ReductionIntI::~ReductionIntI()
 void ReductionIntI::run()
     {
     // TODO ReductionIntI
+    KIntProtocoleI<<<grid.dg,grid.db, sizeSM >>>(ptrSumGM);
+    GM::memcpyDToH_int(ptrSum, ptrSumGM);
     }
 
 /*----------------------------------------------------------------------*\

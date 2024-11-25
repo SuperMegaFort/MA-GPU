@@ -2,16 +2,21 @@
 #	Qui
 ###########################################
 
-nom1                 =
-prenom1              =
-accompte cuda        =
+nom1                 = Telley
+prenom1              = Cyril
+accompte cuda        = mse22
 
-nom2                 =
-prenom2              =
-accompte cuda        =
+nom2                 = Antoine
+prenom2              = Ottiger
+accompte cuda        = mse16
+
+nom2                 = Abdi
+prenom2              = Vural
+accompte cuda        = mse25
+
 
 Rendu
-Accompte cuda        = 
+Accompte cuda        = mse22
 (1 seul par groupe)
 
 ###########################################

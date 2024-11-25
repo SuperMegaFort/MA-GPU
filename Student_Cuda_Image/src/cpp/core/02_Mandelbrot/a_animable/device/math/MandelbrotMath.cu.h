@@ -44,10 +44,10 @@ class MandelbrotMath
 
     public:
 
-	__device__ MandelbrotMath(int n) :
-		n(n)
+	__device__ MandelbrotMath(int n)
 	    {
-	    //
+	    // n(n);
+	     this->n = n;
 	    }
 
 	__device__
@@ -84,6 +84,36 @@ class MandelbrotMath
 	    //		ptrColorIJ->z = 128;
 	    //		ptrColorIJ->w = 255; // opacity facultatif
 	    //		}
+
+	    // Etape 1 : 	Commencer par afficher une image uniforme grise (128 par exemple)
+
+	    // ptrColorIJ->x = 128;
+	    // ptrColorIJ->y = 128;
+	    // ptrColorIJ->z = 128;
+	    // ptrColorIJ->w = 255;
+
+	    // Étape 2 : (à décommenter une fois l'image grise validée)
+	    // Si indiceArret est égal au nombre maximal d'itérations, le point est considéré comme appartenant à l'ensemble de Mandelbrot
+
+	    int indiceArret = suite(x, y);
+	    if (indiceArret == n)
+	    {
+
+	        ptrColorIJ->x = 0;
+	        ptrColorIJ->y = 0;
+	        ptrColorIJ->z = 0;
+	        ptrColorIJ->w = 255;
+	    }
+	    else
+	    {
+
+		float hue01 = indiceArret / (float)n;
+
+	        Colors::HSB_TO_RVB(hue01, ptrColorIJ);
+
+
+	        ptrColorIJ->w = 255;
+	    }
 	    }
 
     private:
@@ -105,10 +135,29 @@ class MandelbrotMath
 	    //
 	    // definit au debut de ce fichier. Est-utile pour  passer facilement d'une version fp64 (double) fp32(float) fp16(half)
 
-	    // Calculer la suite en (x,y) jusqu'à n, à moins que critere arret soit atteint avant
-	    // return le nombre d'element de la suite calculer, ie un entier
-	    }
 
+	    real a = ZERO;
+	    real b = ZERO;
+	    real a2 = ZERO;
+	    real b2 = ZERO;
+	    int k = 0;
+
+
+	    while (k < n && (a2 + b2) <= QUATRE) // tant que k inférieur au nombre maximal d'itération et que la suite converge
+		{
+		    real aCopy = a;
+		    a = a2 - b2 + x;
+		    b = DEUX * aCopy * b + y;
+
+
+		    a2 = a * a;
+		    b2 = b * b;
+
+		    k++; // Incrémentation de l'indice d'itération
+		}
+
+	    return k;
+	    }
 	//
 	// Risque:
 	//

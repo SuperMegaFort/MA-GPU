@@ -34,16 +34,18 @@ ReductionAddIntI::ReductionAddIntI(const Grid& grid , int* ptrSum , bool isVerbo
     {
     // TODO ReductionAddIntI
     // MM pour ptrSumGM (oubliez pas initialisation)
-    this->sizeSM = -1;
+    this->sizeSM = sizeof(int)*grid.threadByBlock();
 
     // Tip:  Il y a une methode dedier pour malloquer un int cote device et l'initialiser a zero
     //
     //		GM::mallocInt0(&ptrSumGM);
+    GM::mallocInt0(&ptrSumGM);
     }
 
 ReductionAddIntI::~ReductionAddIntI()
     {
     // TODO ReductionAddIntI
+    GM::free(ptrSumGM);
     }
 
 /*--------------------------------------*\
@@ -59,6 +61,10 @@ void ReductionAddIntI::run()
     // Tip:  Il y a une methode dedier ramener coter host un int
     //
     //		GM::memcpyDtoH_int(ptrDestination, ptrSourceGM);
+
+
+    KAddIntProtocoleI<<<grid.dg,grid.db, sizeSM >>>(ptrSumGM);
+    GM::memcpyDToH_int(ptrSum, ptrSumGM);
     }
 
 /*----------------------------------------------------------------------*\

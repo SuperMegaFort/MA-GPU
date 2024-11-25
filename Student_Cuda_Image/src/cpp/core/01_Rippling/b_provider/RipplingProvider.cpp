@@ -19,9 +19,10 @@ Grid RipplingProvider::grid()
     const int MP = Hardware::getMPCount();
     const int CORE_MP = Hardware::getCoreCountMP();
 
-    Grid grid;//TODO
+    dim3 dg(MP, 3, 1);
+    dim3 db(CORE_MP, 4, 1);
 
-    assert(false); //to be removed once implemented
+    Grid grid(dg, db);
 
     return grid;
     }
